@@ -13,7 +13,7 @@ Lasso peptide predictions for sequences within 30 residues take approximately 10
 - `threadpoolctl==3.5.0`
 
 Ensure your Linux environment (python=3.10) includes the following software:
-- **Amber:** `pmemd.cuda`
+- **Amber:** `pmemd.MPI`
 - **PyMOL:** `pymol -c`
 
 Hardware and parallel computing:
@@ -52,7 +52,7 @@ See [Amber Installation Guide](https://ambermd.org/Installation.php)
 ## Usage
 
 ```bash
-python script_name.py -seq <sequence> -tname <target_name> [-fdir <fold_direction>]`
+python script_name.py -seq <sequence> -tname <target_name> [-fdir <fold_direction>]
 ```
 
 ### Arguments
