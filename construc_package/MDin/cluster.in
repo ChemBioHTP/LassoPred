@@ -1,0 +1,7 @@
+parm pro_solv.prmtop
+trajin prod.nc
+strip :WAT,Na+,Cl-
+autoimage
+cluster C1 @CA clusters 5 out cnumvtime.out summary summary.out summaryhalf summaryhalf.out repout cluster_result repfmt pdb
+go
+

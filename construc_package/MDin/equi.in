@@ -1,0 +1,14 @@
+Equilibration:constant pressure
+ &cntrl
+  imin  = 0,  ntx = 5,  irest = 1,
+  ntf   = 2,  ntc = 2,
+  nstlim= 25000, dt= 0.002,
+  cut   = 10.0,
+  temp0 = 300.0,
+  ntpr  = 4, ntwx = 5000,
+  ntt   = 3, gamma_ln = 5.0,
+  ntb   = 2,  ntp = 1,
+  iwrap = 1,
+  ig    = -1,
+  ntr   = 1, restraint_wt = 2.0, restraintmask = '@C,CA,N',
+ /
