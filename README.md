@@ -4,6 +4,9 @@ LassoPred predicts 3D structures using provided lasso peptide sequence data. It 
 
 Lasso peptide predictions for sequences within 30 residues take approximately 10 minutes.
 
+We also provide a web server that can generate predicted structures including MD files. User can download the results and run the relax step on their server. [LassoPred_web](lassopred.accre.vanderbilt.edu)
+
+
 ## Requirements
 
 - `joblib==1.4.2`
@@ -110,3 +113,13 @@ For this sequence, although our classifier predicts the top 3 loop lengths to be
 
 **Loop and Tail Lengths:** The loop length and tail length should be at least 5 residues combined. The shortest naturally discovered lasso peptide has a loop of 3 and a tail of 2. If the remaining length after the potential isopeptide position is less than 5, the sequence will be rejected.
 
+
+## Citing this work
+
+```bibtex
+@article{ouyang2024predicting,
+  title={Predicting 3D Structures of Lasso Peptides},
+  author={Ouyang, Xingyu and Ran, Xinchun and Xu, Han and Zhao, Yi-Lei and Link, A James and Yang, Zhongyue},
+  year={2024}
+}
+```
