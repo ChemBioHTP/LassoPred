@@ -6,8 +6,8 @@
 - [System Requirements](#system-requirements)
 - [Installation Guide](#installation-guide)
 - [Demo](#demo)
-- [Results](#results)
-- [Note](#results)
+- [Instructions for use](#instructions-for-use)
+- [Note](#note)
 
 # Overview
 
@@ -24,8 +24,8 @@ We also provide a web server that can generate predicted structures including MD
 The `LassoPred` package requires a standard computer with sufficient CPU and GPU resources to support the operations defined by the user. For minimal performance, an 8-core CPU is recommended. For optimal performance, we recommend the following specifications::
 
 - **CPU:** 8-core CPU (required for minimal performance)
-- **GPU:** (optimal) NVIDIA GPU with at least 4GB VRAM, supporting CUDA Compute Capability 3.5 or higher (e.g., NVIDIA GeForce GTX 1050 Ti or above)
-- **Memory:** 16GB of RAM.
+- **GPU:** (optimal) NVIDIA GPU with at least 4GB VRAM, supporting CUDA Compute Capability 3.5 or higher
+- **Memory:** 16GB of RAM
 
 ## Software requirements
 
@@ -80,22 +80,11 @@ conda install conda-forge::pymol-open-source
 
 See [Amber Installation Guide](https://ambermd.org/Installation.php)
 
-
-## Usage
-
-```bash
-python script_name.py -seq <sequence> -tname <target_name> [-fdir <fold_direction>]
-```
-
-### Arguments
-
-`-seq`, `--sequence`: The sequence for prediction (required).
-
-`-tname`,` --target_name`: The target directory name (required).
-
-`-fdir`, `--fold_direction`: Direction of lasso peptide ring folding (optional). Choices are left or right (default: right).
+With the recommended specifications, the setup (except for Amber) will complete in about 10 minutes.
 
 # Demo
+
+Here we have several lasso peptide sequences that have not been reported in the [PDB](https://www.rcsb.org/). You can run LassoPred as follows:
 
 ```bash
 python predict.py -seq VGCETQEEVDELWAKLTADGGQEQPCAWLK -tname my_test1
@@ -104,6 +93,41 @@ python predict.py -seq SIEDGTIKEAGSSQYYFV -tname my_test3
 python predict.py -seq SVDDEGLREPMQPQLAWF -tname my_test4
 python predict.py -seq SGIGDVFPEPNMVRRWD -tname my_test5
 ```
+
+The expected output files are included in the demos folder.
+
+For an 8-core CPU computer, the average runtime for the samples above (13-30 amino acids) is approximately 4-12 minutes each.
+
+# Instructions for use
+
+LassoPred allows users to predict the 3D structure of a lasso peptide. We assume that the sequence has already been identified as a lasso peptide. If not, the sequence will be rejected, and errors may occur.
+
+## Usage
+
+To run the software on your data, use the following command:
+
+```bash
+python script_name.py -seq <sequence> -tname <target_name> [-fdir <fold_direction>]
+```
+
+## Arguments
+
+`-seq`, `--sequence`: The sequence for prediction (required).
+
+`-tname`,` --target_name`: The target directory name (required).
+
+`-fdir`, `--fold_direction`: Direction of lasso peptide ring folding (optional). Choices are left or right (default: right).
+
+## Reproduction Instructions
+
+To reproduce all the quantitative results in the manuscript, follow these steps:
+
+- Set up your environment as described in the "Setting up the environment" section.
+- Use the sequences provided in the demo or your own sequences identified as lasso peptides.
+- Run the predictions using the command mentioned in the "Usage" section.
+- Compare the output files with the expected results included in the demos folder.
+
+These instructions should enable you to replicate the results accurat
 
 # Results
 
