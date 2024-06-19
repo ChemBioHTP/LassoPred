@@ -225,7 +225,7 @@ quit
         os.chdir(min1_dir)
         # Run pmemd.cuda
         #subprocess.run(['pmemd.cuda', '-O', '-p', 'pro_solv.prmtop', '-c', 'pro_solv.inpcrd', '-i', 'min1.in', '-o', 'min1.out', '-r', 'min1.rst', '-ref', 'pro_solv.inpcrd', '-AllowSmallBox'])
-        subprocess.run(['mpirun','-np','16','pmemd.MPI','-O','-p','pro_solv.prmtop','-c','pro_solv.inpcrd','-i','min1.in','-o','min1.out','-r','min1.rst','-ref','pro_solv.inpcrd','-AllowSmallBox'])
+        subprocess.run(['mpirun','-np','8','pmemd.MPI','-O','-p','pro_solv.prmtop','-c','pro_solv.inpcrd','-i','min1.in','-o','min1.out','-r','min1.rst','-ref','pro_solv.inpcrd','-AllowSmallBox'])
         
         # Run cpptraj
         subprocess.run(['cpptraj', '-p', 'pro_solv.prmtop', '-y', 'min1.rst', '-x', 'min1.pdb'])
