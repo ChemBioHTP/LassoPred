@@ -1,5 +1,16 @@
 # LassoPred
 
+## Contents
+
+- [Overview](#overview)
+- [System Requirements](#system-requirements)
+- [Installation Guide](#installation-guide)
+- [Demo](#demo)
+- [Results](#results)
+- [Note](#results)
+
+# Overview
+
 LassoPred predicts 3D structures using provided lasso peptide sequence data. It generates three possible optimized structures, prediction information, and MD input files.
 
 Lasso peptide predictions for sequences within 30 residues take approximately 10 minutes.
@@ -7,7 +18,25 @@ Lasso peptide predictions for sequences within 30 residues take approximately 10
 We also provide a web server that can generate predicted structures including MD files. User can download the results and run the relax step on their server. [LassoPred_web](lassopred.accre.vanderbilt.edu)
 
 
-## Requirements
+# System Requirements
+
+## Hardware Requirements
+The `LassoPred` package requires a standard computer with sufficient CPU and GPU resources to support the operations defined by the user. For minimal performance, an 8-core CPU is recommended. For optimal performance, we recommend the following specifications::
+
+- **CPU:** 8-core CPU (required for minimal performance)
+- **GPU:** (optimal) NVIDIA GPU with at least 4GB VRAM, supporting CUDA Compute Capability 3.5 or higher (e.g., NVIDIA GeForce GTX 1050 Ti or above)
+- **Memory:** 16GB of RAM.
+
+## Software requirements
+
+### OS Requirements
+
+The package development version is tested on *Linux* operating systems. The developmental version of the package has been tested on the following systems:
+
+- Linux: CentOS 7.9 
+- Mac OS
+
+### Python Dependencies
 
 - `joblib==1.4.2`
 - `numpy==1.26.4`
@@ -15,16 +44,16 @@ We also provide a web server that can generate predicted structures including MD
 - `scipy==1.13.0`
 - `threadpoolctl==3.5.0`
 
+### Additional Software Requirements
+
 Ensure your Linux environment (python=3.10) includes the following software:
-- **Amber:** `pmemd.MPI`
-- **PyMOL:** `pymol -c`
+- Amber: `pmemd.MPI`
+- PyMOL: `pymol -c`
+- MPI: `mpirun`
 
-Hardware and parallel computing:
+# Installation Guide
 
-- **CPU:** A 16-core CPU is recommended.
-- **MPI:** Install MPI and use the `mpirun` command to enable parallel computing capabilities.
-
-## Install
+## Setting up the environment
 
 We recommend using a conda environment.
 
@@ -60,12 +89,10 @@ python script_name.py -seq <sequence> -tname <target_name> [-fdir <fold_directio
 
 ### Arguments
 `-seq`, `--sequence`: The sequence for prediction (required).
-
 `-tname`,` --target_name`: The target directory name (required).
-
 `-fdir`, `--fold_direction`: Direction of lasso peptide ring folding (optional). Choices are left or right (default: right).
 
-## Example
+# Demo
 
 ```bash
 python predict.py -seq VGCETQEEVDELWAKLTADGGQEQPCAWLK -tname my_test1
@@ -75,7 +102,7 @@ python predict.py -seq SVDDEGLREPMQPQLAWF -tname my_test4
 python predict.py -seq SGIGDVFPEPNMVRRWD -tname my_test5
 ```
 
-## Output
+# Results
 
 The directory under the target name you specified will include:
 
@@ -83,7 +110,7 @@ The directory under the target name you specified will include:
 - Prediction summary: `summary.csv`. This file records the predicted annotations.
 - MD simulation files: `MDfiles1`, `MDfiles2`, `MDfiles3`. These folders include the force field files (`.prmtop` and `.inpcrd`) and correspond to the optimized structures.
 
-## Note
+# Note
 
 For certain reasons, there may **not** be three predicted results.
 
