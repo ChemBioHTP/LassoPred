@@ -88,8 +88,11 @@ python script_name.py -seq <sequence> -tname <target_name> [-fdir <fold_directio
 ```
 
 ### Arguments
+
 `-seq`, `--sequence`: The sequence for prediction (required).
+
 `-tname`,` --target_name`: The target directory name (required).
+
 `-fdir`, `--fold_direction`: Direction of lasso peptide ring folding (optional). Choices are left or right (default: right).
 
 # Demo
