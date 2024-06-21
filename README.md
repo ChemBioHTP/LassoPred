@@ -1,5 +1,5 @@
 # LassoPred
-
+LassoPred source code is under the CC BY-NC-SA 3.0. And the LassoPred params (pkl file under the construc_package) is under the CC BY-NC-SA 4.0
 ## Contents
 
 - [Overview](#overview)
