@@ -15,7 +15,7 @@ LassoPred predicts 3D structures using provided lasso peptide sequence data. It 
 
 Lasso peptide predictions for sequences within 30 residues take approximately 10 minutes.
 
-We also provide a web server that can generate predicted structures including MD files. User can download the results and run the relax step on their server. [LassoPred_web](lassopred.accre.vanderbilt.edu)
+We also provide a web server that can generate predicted structures including MD files. User can download the results and run the relax step on their server. [LassoPred_web](https://lassopred.accre.vanderbilt.edu)
 
 
 # System Requirements
