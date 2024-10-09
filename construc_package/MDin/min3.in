@@ -1,0 +1,8 @@
+Initial minimisation
+ &cntrl
+   imin=1, maxcyc=10000, ncyc=5000,
+   iwrap=1,
+   cut=10.0, ntb=1,
+   ntr=0,
+ /
+

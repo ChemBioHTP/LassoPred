@@ -1,0 +1,15 @@
+NPT
+ &cntrl
+  imin=0,
+  iwrap=1,
+  irest=1, ntx=5,
+  cut=10.0, ntb=2,
+  ntp=1, pres0=1.0, taup=2,
+  ntr=1, restraint_wt=2, restraintmask= '@CA,N,C',
+  ntc=2, ntf=2,
+  temp0=300.0,
+  ntt=3, gamma_ln=1.0, ig=-1,
+  nstlim=15000, dt=0.002,
+  ntpr=5000, ntwx=5000, ntwr=5000
+ /
+
