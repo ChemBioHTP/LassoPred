@@ -25,15 +25,25 @@ def create_result_timed_folder(target_name, timestamp):
     return path
 
 def predict_annotation(sequence):
-    #sequence = args.sequence
-    iso_model_path = os.path.join(construc_package_path, "iso_model.pkl")
-    upper_plug_model_path = os.path.join(construc_package_path, "upper_plug_model.pkl")
-    k=3
-    iso_pos = LassoPred_classifier.predict_iso_with_loaded_model(sequence=sequence, model_path=iso_model_path, k=k)
-    upper_plug = LassoPred_classifier.predict_upper_plug_with_loaded_model(sequence=sequence, model_path=upper_plug_model_path, k=k, iso_position=iso_pos)
+
+    iso_model_path = os.path.join(construc_package_path,"iso_model.pkl")
+    iso_scaler_path = os.path.join(construc_package_path,"iso_scaler.pkl")
+    iso_pca_path = os.path.join(construc_package_path,"iso_pca.pkl")
+
+    plug_model_path = os.path.join(construc_package_path,"plug_model.pkl")
+    plug_scaler_path = os.path.join(construc_package_path,"plug_scaler.pkl")
+    plug_pca_path = os.path.join(construc_package_path,"plug_pca.pkl")
+
+    k=2
+
+    feature_matrix = LassoPred_classifier.get_features_from_esm(sequence,k)
+
+    iso_pos = LassoPred_classifier.predict_iso_with_loaded_model(sequence,iso_model_path,iso_pca_path,iso_scaler_path,k,feature_matrix)
+    upper_plug = LassoPred_classifier.predict_upper_plug_with_loaded_model(sequence,plug_model_path,plug_pca_path,plug_scaler_path,k,feature_matrix,iso_position=iso_pos)
     ring_len = iso_pos
     loop_lens = [x - iso_pos for x in upper_plug]
     print(sequence,",",ring_len,",",loop_lens)
+
     return ring_len, loop_lens
 
 def compress_folder(folder_path, output_zip_file):
@@ -84,7 +94,7 @@ def create_summary_csv(filename, sequence, ring_len, loop_lens):
     with open(filename, 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(['Rank', 'Sequence', 'Ring Length', 'Loop Length'])
-        for i, loop_len in enumerate(sorted(loop_lens), start=1):
+        for i, loop_len in enumerate(loop_lens, start=1):
             writer.writerow([f'rank{i}', sequence, ring_len, loop_len])
 
 if __name__ == "__main__":
